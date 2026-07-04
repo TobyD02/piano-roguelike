@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cx8oj0134s8tk"]
+
+[ext_resource type="Script" uid="uid://gdbgi87ssy0y" path="res://Scenes/Card/card.gd" id="1_r5dc4"]
+[ext_resource type="PackedScene" uid="uid://cx8tjobbt4dmn" path="res://Scenes/Note/note.tscn" id="3_ac5pp"]
+[ext_resource type="Texture2D" uid="uid://de5elx58l4wtp" path="res://Assets/Pixel Piano 1.0/Felt/Felt1.png" id="6_c26c2"]
+
+[node name="Card" type="Node2D" unique_id=187950168]
+script = ExtResource("1_r5dc4")
+
+[node name="Felt" type="Sprite2D" parent="." unique_id=1753616912]
+position = Vector2(2, -13.5)
+texture = ExtResource("6_c26c2")
+region_enabled = true
+region_rect = Rect2(70, -1, 34, 3)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1053644378]
+zoom = Vector2(8, 8)
+
+[node name="NoteC" parent="." unique_id=375133897 instance=ExtResource("3_ac5pp")]
+position = Vector2(-13, 0)
+
+[node name="NoteD" parent="." unique_id=1819757794 instance=ExtResource("3_ac5pp")]
+position = Vector2(-8, 0)
+
+[node name="NoteE" parent="." unique_id=1462005201 instance=ExtResource("3_ac5pp")]
+position = Vector2(-3, 0)
+
+[node name="NoteF" parent="." unique_id=1297675691 instance=ExtResource("3_ac5pp")]
+position = Vector2(2, 0)
+
+[node name="NoteG" parent="." unique_id=1331967845 instance=ExtResource("3_ac5pp")]
+position = Vector2(7, 0)
+
+[node name="NoteA" parent="." unique_id=1667028676 instance=ExtResource("3_ac5pp")]
+position = Vector2(12, 0)
+
+[node name="NoteB" parent="." unique_id=1287530397 instance=ExtResource("3_ac5pp")]
+position = Vector2(17, 0)
+
+[node name="NoteC#" parent="." unique_id=1597722472 instance=ExtResource("3_ac5pp")]
+position = Vector2(-10.5, 0)
+
+[node name="NoteD#" parent="." unique_id=401805490 instance=ExtResource("3_ac5pp")]
+position = Vector2(-5.5, 0)
+
+[node name="NoteF#" parent="." unique_id=722202969 instance=ExtResource("3_ac5pp")]
+position = Vector2(4.5, 0)
+
+[node name="NoteG#" parent="." unique_id=1809585859 instance=ExtResource("3_ac5pp")]
+position = Vector2(9.5, 0)
+
+[node name="NoteA#" parent="." unique_id=786406668 instance=ExtResource("3_ac5pp")]
+position = Vector2(14.5, 0)
