@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://gdbgi87ssy0y" path="res://Scenes/Card/card.gd" id="1_r5dc4"]
 [ext_resource type="PackedScene" uid="uid://cx8tjobbt4dmn" path="res://Scenes/Note/note.tscn" id="3_ac5pp"]
+[ext_resource type="Script" uid="uid://cmp2qmn3cgnhv" path="res://Scenes/Card/card_note_controller.gd" id="4_c0g18"]
 [ext_resource type="Texture2D" uid="uid://de5elx58l4wtp" path="res://Assets/Pixel Piano 1.0/Felt/Felt1.png" id="6_c26c2"]
 
-[node name="Card" type="Node2D" unique_id=187950168]
+[node name="Card" type="Node2D" unique_id=187950168 node_paths=PackedStringArray("card_note_controller")]
 script = ExtResource("1_r5dc4")
+card_note_controller = NodePath("CardNoteController")
 
 [node name="Felt" type="Sprite2D" parent="." unique_id=1753616912]
 position = Vector2(2, -13.5)
@@ -51,3 +53,6 @@ position = Vector2(9.5, 0)
 
 [node name="NoteA#" parent="." unique_id=786406668 instance=ExtResource("3_ac5pp")]
 position = Vector2(14.5, 0)
+
+[node name="CardNoteController" type="Node2D" parent="." unique_id=842438995]
+script = ExtResource("4_c0g18")
