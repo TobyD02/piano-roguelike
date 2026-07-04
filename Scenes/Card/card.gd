@@ -15,7 +15,7 @@ var note_b: Note
 
 var notes: Dictionary 
 
-var color: Note.NoteColorEnum = Note.NoteColorEnum.OLD
+var color: Note.NoteColorEnum = Note.NoteColorEnum.YELLOW
 
 func _ready():
 	note_c = get_node("NoteC")
@@ -60,19 +60,20 @@ var idx = 0
 
 func _process(delta: float):
 	var notes_array = [
-	note_c,
-	note_c_sharp,
-	note_d,
-	note_d_sharp,
-	note_e,
-	note_f,
-	note_f_sharp,
-	note_g,
-	note_g_sharp,
-	note_a,
-	note_a_sharp,
-	note_b,
-]
+		note_c,
+		note_c_sharp,
+		note_d,
+		note_d_sharp,
+		note_e,
+		note_f,
+		note_f_sharp,
+		note_g,
+		note_g_sharp,
+		note_a,
+		note_a_sharp,
+		note_b,
+	]
+
 	tick += delta
 	if tick >= 0.25:
 		setup_note(notes_array[idx], notes[notes_array[idx]], color, not notes_array[idx].is_pressed)
