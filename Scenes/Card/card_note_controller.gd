@@ -3,7 +3,7 @@ class_name CardNoteController extends Node2D
 
 @export_tool_button("Update Card") var editor_update_card_btn = _editor_update_card
 @export var editor_keys_pressed: Array[Note.NoteEnum] = []
-@export var color: Note.NoteColorEnum = Note.NoteColorEnum.OLD
+@export var color: Note.NoteColorEnum = Note.NoteColorEnum.WHITE
 
 var card_background: Sprite2D
 
@@ -81,7 +81,11 @@ func set_notes_pressed(_notes: Array[Note.NoteEnum]):
 		var is_pressed = note in _notes
 		notes_to_nodes[note].set_is_pressed(is_pressed)
 		
-func set_card_color(_color: Note.NoteColorEnum):
+func set_notes_color(_notes: Array[Note.NoteEnum], _color: Note.NoteColorEnum):
+	for note in _notes:
+		notes_to_nodes[note].set_note_color(_color)
+		
+func set_full_card_color(_color: Note.NoteColorEnum):
 	color = _color
 	for note in notes_to_nodes:
 		notes_to_nodes[note].set_note_color(color)

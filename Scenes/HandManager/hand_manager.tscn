@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://br3blcrjigjon"]
+
+[ext_resource type="Script" uid="uid://bqi6c0a5ta6xy" path="res://Scenes/HandManager/hand_manager.gd" id="1_s7b4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfjxr"]
+radius = 1.0
+
+[node name="HandManager" type="Node2D" unique_id=1948066415]
+script = ExtResource("1_s7b4y")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=155581641]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=152008301]
+shape = SubResource("CircleShape2D_rfjxr")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
