@@ -1,3 +1,4 @@
+@tool
 class_name Note extends Node2D
 
 var note: NoteEnum
@@ -73,11 +74,11 @@ enum NoteColorEnum {
 }
 
 func _ready():
-	atlas_texture = AtlasTexture.new()
-	atlas_texture.atlas = load("res://Assets/Pixel Piano 1.0/texture_atlas.png")
-	
 	current_animation_offset = note_animation_x_offset_map[NoteEnum.NOTE_C]
 	
+func _process(delta):
+	if Engine.is_editor_hint(): # Safe guard tool
+		return
 
 func set_note(_note: NoteEnum):
 	note = _note
@@ -92,23 +93,22 @@ func set_is_pressed(_is_pressed: bool):
 	set_sprite()
 	
 func set_sprite():
+	if not is_instance_valid(sprite):
+		return
+
+	if atlas_texture == null:
+		atlas_texture = AtlasTexture.new()
+		atlas_texture.atlas = load("res://Assets/Pixel Piano 1.0/texture_atlas.png")
+
 	var offset = note_animation_x_offset_map[note]
-	print(note)
 	if is_note_black(note):
-		#pass
 		offset += note_color_index_map[note_color] * black_note_animation_spacing * 2
 	else:
-		var color_offset = note_color_index_map[note_color] * white_notes_color_offset
-		print("color_offset: ", color_offset)
-		offset += color_offset
-		
+		offset += note_color_index_map[note_color] * white_notes_color_offset
+
 	if is_pressed:
-		if is_note_black(note):
-			offset += black_note_animation_spacing
-		else:
-			offset += white_note_animation_spacing
-		
-	print(note, offset)
+		offset += black_note_animation_spacing if is_note_black(note) else white_note_animation_spacing
+
 	atlas_texture.region = Rect2(offset, 0.0, atlas_texture_width, atlas_texture_height)
 	sprite.texture = atlas_texture
 	

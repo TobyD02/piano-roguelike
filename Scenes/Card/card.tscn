@@ -3,56 +3,59 @@
 [ext_resource type="Script" uid="uid://gdbgi87ssy0y" path="res://Scenes/Card/card.gd" id="1_r5dc4"]
 [ext_resource type="PackedScene" uid="uid://cx8tjobbt4dmn" path="res://Scenes/Note/note.tscn" id="3_ac5pp"]
 [ext_resource type="Script" uid="uid://cmp2qmn3cgnhv" path="res://Scenes/Card/card_note_controller.gd" id="4_c0g18"]
+[ext_resource type="Texture2D" uid="uid://bjsvr3xdseg47" path="res://Assets/Pixel Piano 1.0/card_backgrounds/yellow_card_background.png" id="4_yw1pg"]
 [ext_resource type="Texture2D" uid="uid://de5elx58l4wtp" path="res://Assets/Pixel Piano 1.0/Felt/Felt1.png" id="6_c26c2"]
 
 [node name="Card" type="Node2D" unique_id=187950168 node_paths=PackedStringArray("card_note_controller")]
 script = ExtResource("1_r5dc4")
 card_note_controller = NodePath("CardNoteController")
 
-[node name="Felt" type="Sprite2D" parent="." unique_id=1753616912]
-position = Vector2(2, -13.5)
-texture = ExtResource("6_c26c2")
-region_enabled = true
-region_rect = Rect2(70, -1, 34, 3)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1053644378]
-zoom = Vector2(8, 8)
-
-[node name="NoteC" parent="." unique_id=375133897 instance=ExtResource("3_ac5pp")]
-position = Vector2(-13, 0)
-
-[node name="NoteD" parent="." unique_id=1819757794 instance=ExtResource("3_ac5pp")]
-position = Vector2(-8, 0)
-
-[node name="NoteE" parent="." unique_id=1462005201 instance=ExtResource("3_ac5pp")]
-position = Vector2(-3, 0)
-
-[node name="NoteF" parent="." unique_id=1297675691 instance=ExtResource("3_ac5pp")]
-position = Vector2(2, 0)
-
-[node name="NoteG" parent="." unique_id=1331967845 instance=ExtResource("3_ac5pp")]
-position = Vector2(7, 0)
-
-[node name="NoteA" parent="." unique_id=1667028676 instance=ExtResource("3_ac5pp")]
-position = Vector2(12, 0)
-
-[node name="NoteB" parent="." unique_id=1287530397 instance=ExtResource("3_ac5pp")]
-position = Vector2(17, 0)
-
-[node name="NoteC#" parent="." unique_id=1597722472 instance=ExtResource("3_ac5pp")]
-position = Vector2(-10.5, 0)
-
-[node name="NoteD#" parent="." unique_id=401805490 instance=ExtResource("3_ac5pp")]
-position = Vector2(-5.5, 0)
-
-[node name="NoteF#" parent="." unique_id=722202969 instance=ExtResource("3_ac5pp")]
-position = Vector2(4.5, 0)
-
-[node name="NoteG#" parent="." unique_id=1809585859 instance=ExtResource("3_ac5pp")]
-position = Vector2(9.5, 0)
-
-[node name="NoteA#" parent="." unique_id=786406668 instance=ExtResource("3_ac5pp")]
-position = Vector2(14.5, 0)
-
 [node name="CardNoteController" type="Node2D" parent="." unique_id=842438995]
 script = ExtResource("4_c0g18")
+editor_keys_pressed = Array[int]([7, 0, 4])
+color = 6
+
+[node name="NoteC" parent="CardNoteController" unique_id=375133897 instance=ExtResource("3_ac5pp")]
+position = Vector2(-15, 13)
+
+[node name="NoteD" parent="CardNoteController" unique_id=1819757794 instance=ExtResource("3_ac5pp")]
+position = Vector2(-10, 13)
+
+[node name="NoteE" parent="CardNoteController" unique_id=1462005201 instance=ExtResource("3_ac5pp")]
+position = Vector2(-5, 13)
+
+[node name="NoteF" parent="CardNoteController" unique_id=1297675691 instance=ExtResource("3_ac5pp")]
+position = Vector2(0, 13)
+
+[node name="NoteG" parent="CardNoteController" unique_id=1331967845 instance=ExtResource("3_ac5pp")]
+position = Vector2(5, 13)
+
+[node name="NoteA" parent="CardNoteController" unique_id=1667028676 instance=ExtResource("3_ac5pp")]
+position = Vector2(10, 13)
+
+[node name="NoteB" parent="CardNoteController" unique_id=1287530397 instance=ExtResource("3_ac5pp")]
+position = Vector2(15, 13)
+
+[node name="NoteC#" parent="CardNoteController" unique_id=1597722472 instance=ExtResource("3_ac5pp")]
+position = Vector2(-12.5, 13)
+
+[node name="NoteD#" parent="CardNoteController" unique_id=401805490 instance=ExtResource("3_ac5pp")]
+position = Vector2(-7.5, 13)
+
+[node name="NoteF#" parent="CardNoteController" unique_id=722202969 instance=ExtResource("3_ac5pp")]
+position = Vector2(2.5, 13)
+
+[node name="NoteG#" parent="CardNoteController" unique_id=1809585859 instance=ExtResource("3_ac5pp")]
+position = Vector2(7.5, 13)
+
+[node name="NoteA#" parent="CardNoteController" unique_id=786406668 instance=ExtResource("3_ac5pp")]
+position = Vector2(12.5, 13)
+
+[node name="CardBackground" type="Sprite2D" parent="CardNoteController" unique_id=1188970181]
+texture = ExtResource("4_yw1pg")
+
+[node name="Felt" type="Sprite2D" parent="CardNoteController" unique_id=1753616912]
+position = Vector2(0, -1)
+texture = ExtResource("6_c26c2")
+region_enabled = true
+region_rect = Rect2(70, 0, 34, 2)
