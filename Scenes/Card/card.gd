@@ -25,6 +25,9 @@ func _generate_random():
 
 	var pressed_note: Note.NoteEnum = notes[randi_range(0, len(notes) - 1)]
 	set_card_note(pressed_note, true)
+	
+	pressed_note = notes[randi_range(0, len(notes) - 1)]
+	set_card_note(pressed_note, true)
 
 func set_card_note(_note: Note.NoteEnum, _is_pressed: bool):
 	var col = Note.NoteColorEnum.GRAY if not _is_pressed else Note.NoteColorEnum.WHITE
@@ -46,6 +49,7 @@ var default_z_index: int
 
 func set_hovered(_hovered: bool):
 	is_hovered = _hovered
+	card_note_controller.set_card_hovered(_hovered)
 
 	
 	

@@ -91,6 +91,10 @@ func set_full_card_color(_color: Note.NoteColorEnum):
 		notes_to_nodes[note].set_note_color(color)
 		
 	update_card_background()
+	
+func set_card_hovered(_card_hovered: bool):
+	for note in notes_to_nodes:
+		notes_to_nodes[note].set_card_hovered(_card_hovered)
 		
 	
 func update_card_background():

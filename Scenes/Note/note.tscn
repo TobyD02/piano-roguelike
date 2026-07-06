@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://cx8tjobbt4dmn"]
 
 [ext_resource type="Script" uid="uid://fm8hi1fjwc0l" path="res://Scenes/Note/note.gd" id="1_78yca"]
+[ext_resource type="Shader" uid="uid://b7t2f2lujc6v6" path="res://Scenes/Note/note_outline_shader.gdshader" id="2_hogmb"]
 [ext_resource type="Texture2D" uid="uid://d0d5q4ex21xgi" path="res://Assets/Pixel Piano 1.0/texture_atlas.png" id="2_rb04o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47m8q"]
+shader = ExtResource("2_hogmb")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 1.0000000475
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7be3q"]
 atlas = ExtResource("2_rb04o")
@@ -12,4 +18,5 @@ script = ExtResource("1_78yca")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=156801709]
+material = SubResource("ShaderMaterial_47m8q")
 texture = SubResource("AtlasTexture_7be3q")

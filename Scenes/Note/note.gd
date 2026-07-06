@@ -1,6 +1,8 @@
 @tool
 class_name Note extends Node2D
 
+var pressed_hover_shader: ShaderMaterial
+
 var note: NoteEnum
 var note_color: NoteColorEnum
 var is_pressed: bool = false
@@ -75,6 +77,12 @@ enum NoteColorEnum {
 
 func _ready():
 	current_animation_offset = note_animation_x_offset_map[NoteEnum.NOTE_C]
+	default_z_index = z_index
+	
+	pressed_hover_shader = ShaderMaterial.new()
+	pressed_hover_shader.shader = load("res://Scenes/Note/note_outline_shader.gdshader")
+	
+	sprite.material = null
 	
 func _process(delta):
 	if Engine.is_editor_hint(): # Safe guard tool
@@ -109,7 +117,7 @@ func set_sprite():
 	if is_pressed:
 		offset += black_note_animation_spacing if is_note_black(note) else white_note_animation_spacing
 
-	atlas_texture.region = Rect2(offset, 0.0, atlas_texture_width, atlas_texture_height)
+	atlas_texture.region = Rect2(offset - 1, 0.0, atlas_texture_width + 2, atlas_texture_height)
 	sprite.texture = atlas_texture
 	
 func is_note_black(note: NoteEnum) -> bool:
@@ -121,6 +129,20 @@ func is_note_black(note: NoteEnum) -> bool:
 		NoteEnum.NOTE_A_SHARP: return true
 	
 	return false
+	
+	
+var default_scale = Vector2.ONE
+var default_z_index: int
+func set_card_hovered(_card_hovered: bool):
+	if is_pressed and _card_hovered:
+		scale = default_scale * 1
+		z_index = default_z_index + 5
+		sprite.material = pressed_hover_shader
+	else:
+		scale = default_scale
+		z_index = default_z_index
+		sprite.material = null
+	
 		
 	
 	
