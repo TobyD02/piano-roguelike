@@ -66,11 +66,11 @@ func initialise_notes():
 
 		
 	for note in notes_to_nodes:
-		update_note(note, color)
+		set_note(note, color)
 		
 	update_card_background()
 
-func update_note(_note: Note.NoteEnum, _color: Note.NoteColorEnum = color, _is_pressed: bool = false):
+func set_note(_note: Note.NoteEnum, _color: Note.NoteColorEnum = color, _is_pressed: bool = false):
 	var note_node = notes_to_nodes[_note]
 	note_node.set_note(_note)
 	note_node.set_note_color(_color)
