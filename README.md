@@ -16,6 +16,10 @@
 		- blue: points
 		- green: etc... (idk think balatro)
 
+- Perhaps cards can have rarities? i.e. Sometimes they will spawn with an additional note, even more rare it may spawn with 2 or 3 extra.
+
+- Cards on hover should show details above, i.e. what notes they have, what harmonies (i.e. Perfect 5th, Minor 3rd, Major Chord, etc...)
+    - Perhaps when selecting a hand you can see the synergies between all selected cards? need to figure this out.
 
 ----
 
@@ -27,7 +31,6 @@ Cards are played as individual notes (white + not pressed = inactive, gray + pre
 Taking a turn is undecided, first idea is that the "board" is 5 octaves of a piano. Each "Card" played adds that card's note to the octave (moving only up to octave to avoid dissonance on playback). 
     - There are many ways to build on this, or perhaps change this. It could make more sense to reduce it down to 2 octaves, and allow playing of x amount of notes which compound.
 
-Perhaps cards can have rarities? i.e. Sometimes they will spawn with an additional note, even more rare it may spawn with 2 or 3 extra.
 
 Round of play example:
 1. Player has a card that adds 5 Mult to each white note played, and +20 Mult if all notes played are part of the same pentatonic scale
