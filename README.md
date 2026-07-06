@@ -15,3 +15,19 @@
         - red: mult
         - blue: points
         - green: etc... (idk think balatro)
+
+
+----
+
+**PLAN**
+Cards are played as individual notes (white + not pressed = inactive, gray + pressed = active - test this to see if its clear enough, perhaps the inverse is better).
+
+"Jokers" add modifiers. i.e. Every played "C" gives +5 mult, Each note played adds its "Perfect 5th" etc...
+
+Taking a turn is undecided, first idea is that the "board" is 5 octaves of a piano. Each "Card" played adds that card's note to the octave (moving only up to octave to avoid dissonance on playback). 
+    - There are many ways to build on this, or perhaps change this. It could make more sense to reduce it down to 2 octaves, and allow playing of x amount of notes which compound.
+
+Round of play example:
+1. Player has a card that adds 5 Mult to each white note played, and +20 Mult if all notes played are part of the same pentatonic scale
+2. Player decides to play his notes "C", "D", "G", "C" and another "C".
+3. This results in *base score* * `15 (3 C's Played)` * `20 (all notes pentatonic)`
