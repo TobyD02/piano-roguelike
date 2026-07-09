@@ -2,21 +2,58 @@
 
 [ext_resource type="Script" uid="uid://gdbgi87ssy0y" path="res://Scenes/Card/card.gd" id="1_r5dc4"]
 [ext_resource type="PackedScene" uid="uid://cx8tjobbt4dmn" path="res://Scenes/Note/note.tscn" id="3_ac5pp"]
+[ext_resource type="Texture2D" uid="uid://dlab6fm6ac52r" path="res://Assets/Pixel Piano 1.0/card_backgrounds/card_background_under.png" id="3_r5dc4"]
 [ext_resource type="Script" uid="uid://cmp2qmn3cgnhv" path="res://Scenes/Card/card_note_controller.gd" id="4_c0g18"]
 [ext_resource type="Texture2D" uid="uid://664vgncp062c" path="res://Assets/Pixel Piano 1.0/card_backgrounds/blue_card_background.png" id="5_yw1pg"]
 [ext_resource type="Texture2D" uid="uid://de5elx58l4wtp" path="res://Assets/Pixel Piano 1.0/Felt/Felt1.png" id="6_c26c2"]
+[ext_resource type="Script" uid="uid://bxyccpb5ul28i" path="res://Scenes/Card/card_info_panel.gd" id="7_rffhp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfjxr"]
-size = Vector2(40, 36)
+[sub_resource type="LabelSettings" id="LabelSettings_41ifo"]
+font_size = 14
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="Node2D" unique_id=187950168 node_paths=PackedStringArray("card_note_controller")]
+[node name="Card" type="Control" unique_id=494292821 node_paths=PackedStringArray("card_note_controller", "card_info_panel", "card_selector")]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_r5dc4")
 card_note_controller = NodePath("CardNoteController")
+card_info_panel = NodePath("CardInfoPanel")
+card_selector = NodePath("CardSelector")
+
+[node name="CardSelector" type="Container" parent="." unique_id=1239268133]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CardInfoPanel" type="BoxContainer" parent="." unique_id=1574064153 node_paths=PackedStringArray("notes_label", "card_note_controller")]
+visible = false
+layout_mode = 0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -30.0
+vertical = true
+script = ExtResource("7_rffhp")
+notes_label = NodePath("NotesLabel")
+card_note_controller = NodePath("../CardNoteController")
+
+[node name="NotesLabel" type="Label" parent="CardInfoPanel" unique_id=91287966]
+layout_mode = 2
+text = "Notes: "
+label_settings = SubResource("LabelSettings_41ifo")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CardNoteController" type="Node2D" parent="." unique_id=842438995]
 script = ExtResource("4_c0g18")
 editor_keys_pressed = Array[int]([7, 0, 4])
 color = 0
+
+[node name="CardBackgroundUnder" type="Sprite2D" parent="CardNoteController" unique_id=1312124481]
+texture = ExtResource("3_r5dc4")
 
 [node name="NoteC" parent="CardNoteController" unique_id=375133897 instance=ExtResource("3_ac5pp")]
 position = Vector2(-15, 1)
@@ -63,8 +100,3 @@ region_rect = Rect2(70, 0, 34, 2)
 
 [node name="CardBackground" type="Sprite2D" parent="CardNoteController" unique_id=1188970181]
 texture = ExtResource("5_yw1pg")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1621170496]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=795095337]
-shape = SubResource("RectangleShape2D_rfjxr")

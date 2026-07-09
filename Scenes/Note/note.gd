@@ -50,6 +50,21 @@ var note_color_index_map: Dictionary = {
 	NoteColorEnum.YELLOW: 6,
 }
 
+const note_enum_to_string: Dictionary = {
+	NoteEnum.NOTE_C: "c",
+	NoteEnum.NOTE_C_SHARP: "c#",
+	NoteEnum.NOTE_D: "d",
+	NoteEnum.NOTE_D_SHARP: "d#",
+	NoteEnum.NOTE_E: "e",
+	NoteEnum.NOTE_F: "f",
+	NoteEnum.NOTE_F_SHARP: "f#",
+	NoteEnum.NOTE_G: "g",
+	NoteEnum.NOTE_G_SHARP: "g#",
+	NoteEnum.NOTE_A: "a",
+	NoteEnum.NOTE_A_SHARP: "a#",
+	NoteEnum.NOTE_B: "b",
+}
+
 enum NoteEnum {
 	NOTE_C,
 	NOTE_C_SHARP,
@@ -135,8 +150,8 @@ var default_scale = Vector2.ONE
 var default_z_index: int
 func set_card_hovered(_card_hovered: bool):
 	if is_pressed and _card_hovered:
-		scale = default_scale * 1
-		z_index = default_z_index + 5
+		scale = default_scale * 1.2
+		z_index = default_z_index + 1
 		sprite.material = pressed_hover_shader
 	else:
 		scale = default_scale

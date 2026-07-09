@@ -1,36 +1,11 @@
 [gd_scene format=3 uid="uid://bcxddi2rdv2p5"]
 
-[ext_resource type="PackedScene" uid="uid://cx8oj0134s8tk" path="res://Scenes/Card/card.tscn" id="1_y5y2p"]
 [ext_resource type="PackedScene" uid="uid://br3blcrjigjon" path="res://Scenes/HandManager/hand_manager.tscn" id="2_j2gud"]
 
 [node name="TestLevel" type="Node2D" unique_id=725978861]
 
 [node name="HandManager" parent="." unique_id=1948066415 instance=ExtResource("2_j2gud")]
 position = Vector2(-158, 70)
-
-[node name="Card" parent="." unique_id=187950168 instance=ExtResource("1_y5y2p")]
-position = Vector2(-158, 70)
-
-[node name="Card2" parent="." unique_id=1649775663 instance=ExtResource("1_y5y2p")]
-position = Vector2(-117, 70)
-
-[node name="Card3" parent="." unique_id=2101491039 instance=ExtResource("1_y5y2p")]
-position = Vector2(-76, 70)
-
-[node name="Card4" parent="." unique_id=833671936 instance=ExtResource("1_y5y2p")]
-position = Vector2(-34, 70)
-
-[node name="Card5" parent="." unique_id=1467664529 instance=ExtResource("1_y5y2p")]
-position = Vector2(9, 70)
-
-[node name="Card6" parent="." unique_id=1267972257 instance=ExtResource("1_y5y2p")]
-position = Vector2(52, 70)
-
-[node name="Card7" parent="." unique_id=269971277 instance=ExtResource("1_y5y2p")]
-position = Vector2(95, 70)
-
-[node name="Card8" parent="." unique_id=1165175369 instance=ExtResource("1_y5y2p")]
-position = Vector2(139, 70)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1128773373]
 zoom = Vector2(5, 5)

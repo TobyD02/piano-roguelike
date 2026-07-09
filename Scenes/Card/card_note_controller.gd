@@ -22,6 +22,21 @@ var note_b: Note
 
 
 var notes_to_nodes: Dictionary 
+var notes_pressed: Dictionary =  {
+	Note.NoteEnum.NOTE_C: false,
+	Note.NoteEnum.NOTE_C_SHARP: false,
+	Note.NoteEnum.NOTE_D: false,
+	Note.NoteEnum.NOTE_D_SHARP: false,
+	Note.NoteEnum.NOTE_E: false,
+	Note.NoteEnum.NOTE_F: false,
+	Note.NoteEnum.NOTE_F_SHARP: false,
+	Note.NoteEnum.NOTE_G: false,
+	Note.NoteEnum.NOTE_G_SHARP: false,
+	Note.NoteEnum.NOTE_A: false,
+	Note.NoteEnum.NOTE_A_SHARP: false,
+	Note.NoteEnum.NOTE_B: false,
+}
+
 
 func _ready():
 	initialise_notes()
@@ -76,10 +91,15 @@ func set_note(_note: Note.NoteEnum, _color: Note.NoteColorEnum = color, _is_pres
 	note_node.set_note_color(_color)
 	note_node.set_is_pressed(_is_pressed)
 	
+	notes_pressed[_note] = _is_pressed
+	
+	
 func set_notes_pressed(_notes: Array[Note.NoteEnum]):
 	for note in notes_to_nodes:
 		var is_pressed = note in _notes
 		notes_to_nodes[note].set_is_pressed(is_pressed)
+		notes_pressed[note] = is_pressed
+
 		
 func set_notes_color(_notes: Array[Note.NoteEnum], _color: Note.NoteColorEnum):
 	for note in _notes:

@@ -1,32 +1,26 @@
 class_name HandManager extends Node2D
 
+@onready var card_scene = preload("res://Scenes/Card/card.tscn")
+
 var selected_card: Card = null
 var hovered_card: Card = null
 
-var mouse_area: Area2D
+var hand: Array[Card] = []
+
+const CARD_WIDTH = 40
+const HAND_SIZE = 20
+const HAND_WIDTH = CARD_WIDTH * 10
 
 func _ready():
-	mouse_area = get_node("Area2D")
-
-func _physics_process(_delta):
-	mouse_area.global_position = get_global_mouse_position()
+	_generate_hand()
+		
+func _generate_hand():
+	var start_x = -HAND_WIDTH/2
+	var start_y = 40
+	var x_off = HAND_WIDTH/HAND_SIZE
 	
-	var overlaps = mouse_area.get_overlapping_areas()
-
-	var top_card: Card = null
-	var highest_z := -INF
-
-	for area in overlaps:
-		var card := area.get_parent() as Card
-		if card.z_index > highest_z:
-			highest_z = card.z_index
-			top_card = card
-
-	if top_card != hovered_card:
-		if hovered_card:
-			hovered_card.set_hovered(false)
-
-		hovered_card = top_card
-
-		if hovered_card:
-			hovered_card.set_hovered(true)
+	for idx in HAND_SIZE:
+		var card = card_scene.instantiate()
+		add_child(card)
+		
+		card.global_position = Vector2(start_x + idx * x_off, start_y)
