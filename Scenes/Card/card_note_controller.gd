@@ -22,7 +22,7 @@ var note_b: Note
 
 
 var notes_to_nodes: Dictionary 
-var notes_pressed: Dictionary =  {
+var notes_pressed: Dictionary[Note.NoteEnum, bool] =  {
 	Note.NoteEnum.NOTE_C: false,
 	Note.NoteEnum.NOTE_C_SHARP: false,
 	Note.NoteEnum.NOTE_D: false,

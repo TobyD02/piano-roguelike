@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gdbgi87ssy0y" path="res://Scenes/Card/card.gd" id="1_r5dc4"]
 [ext_resource type="PackedScene" uid="uid://cx8tjobbt4dmn" path="res://Scenes/Note/note.tscn" id="3_ac5pp"]
+[ext_resource type="FontFile" uid="uid://c6x50gb2a55py" path="res://Assets/m5x7.ttf" id="3_j6efv"]
 [ext_resource type="Texture2D" uid="uid://dlab6fm6ac52r" path="res://Assets/Pixel Piano 1.0/card_backgrounds/card_background_under.png" id="3_r5dc4"]
 [ext_resource type="Script" uid="uid://cmp2qmn3cgnhv" path="res://Scenes/Card/card_note_controller.gd" id="4_c0g18"]
 [ext_resource type="Texture2D" uid="uid://664vgncp062c" path="res://Assets/Pixel Piano 1.0/card_backgrounds/blue_card_background.png" id="5_yw1pg"]
@@ -9,8 +10,8 @@
 [ext_resource type="Script" uid="uid://bxyccpb5ul28i" path="res://Scenes/Card/card_info_panel.gd" id="7_rffhp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_41ifo"]
-font_size = 14
-outline_size = 4
+font = ExtResource("3_j6efv")
+font_size = 100
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Control" unique_id=494292821 node_paths=PackedStringArray("card_note_controller", "card_info_panel", "card_selector")]
@@ -28,21 +29,30 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 
-[node name="CardInfoPanel" type="BoxContainer" parent="." unique_id=1574064153 node_paths=PackedStringArray("notes_label", "card_note_controller")]
+[node name="CardInfoPanel" type="BoxContainer" parent="." unique_id=1574064153 node_paths=PackedStringArray("notes_label", "harmony_label", "card_note_controller")]
 visible = false
 layout_mode = 0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = -30.0
+offset_left = -21.0
+offset_top = -62.0
+offset_right = 204.0
+offset_bottom = 102.0
+scale = Vector2(0.2, 0.2)
 vertical = true
 script = ExtResource("7_rffhp")
 notes_label = NodePath("NotesLabel")
+harmony_label = NodePath("HarmonyLabel")
 card_note_controller = NodePath("../CardNoteController")
 
 [node name="NotesLabel" type="Label" parent="CardInfoPanel" unique_id=91287966]
 layout_mode = 2
-text = "Notes: "
+text = "Text"
+label_settings = SubResource("LabelSettings_41ifo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HarmonyLabel" type="Label" parent="CardInfoPanel" unique_id=347602840]
+layout_mode = 2
+text = "Text"
 label_settings = SubResource("LabelSettings_41ifo")
 horizontal_alignment = 1
 vertical_alignment = 1
