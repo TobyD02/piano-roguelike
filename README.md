@@ -38,3 +38,15 @@ Round of play example:
 3. This results in *base score* * `15 (3 C's Played)` * `20 (all notes pentatonic)`
 
 ----
+
+## Next Changes
+
+Ok - what I really need to think about is gameplay. Firstly - I think cards should span 2 octaves? Once they have undergone harmonic analysis, this should be stored as part of the card. At that point, the card be reorganised so that the root note is the lowest. 
+
+In terms of gameplay, is playing chords really the best idea? What about if you played single notes? all these notes would then add into some 3 octave piano in the middle, resulting in different harmonies etc... Then, rather than each card having its own harmonic profile (Chord class), the resulting played hand would instead. This can be assessed based on voicings etc... (which i will no longer have to shuffle for since i can just use the inversion played by the player). Different alterations can result in different scoring mechanisms etc... 
+
+Need to think about how the gameplay progresses/accelerates as the game goes on as well. i.e. obviously notes can be modified (colours) to have unique effects, but is there something perhaps to do with:- Number of notes the player can play
+- Number of octaves?
+- Notes retriggering?
+- Notes becoming the root of a new chord (or perhaps triggering all subchords from its root - i.e. `c e g b d` could trigger "cmaj", "cmaj7", "cmaj9")
+
