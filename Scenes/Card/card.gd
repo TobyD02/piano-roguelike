@@ -37,10 +37,10 @@ func _generate_random():
 	for i in 4:
 		var pressed_note: Note.NoteEnum = notes[randi_range(0, len(notes) - 1)]
 		set_card_note(pressed_note, true)
+	#set_card_note(Note.NoteEnum.NOTE_F_SHARP, true)
 	#set_card_note(Note.NoteEnum.NOTE_G, true)
+	#set_card_note(Note.NoteEnum.NOTE_A, true)
 	#set_card_note(Note.NoteEnum.NOTE_A_SHARP, true)
-	#set_card_note(Note.NoteEnum.NOTE_C_SHARP, true)
-	#set_card_note(Note.NoteEnum.NOTE_E, true)
 
 
 func set_card_note(_note: Note.NoteEnum, _is_pressed: bool):
