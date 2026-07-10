@@ -19,7 +19,7 @@
 - Perhaps cards can have rarities? i.e. Sometimes they will spawn with an additional note, even more rare it may spawn with 2 or 3 extra.
 
 - Cards on hover should show details above, i.e. what notes they have, what harmonies (i.e. Perfect 5th, Minor 3rd, Major Chord, etc...)
-    - Perhaps when selecting a hand you can see the synergies between all selected cards? need to figure this out.
+	- Perhaps when selecting a hand you can see the synergies between all selected cards? need to figure this out.
 
 ----
 
@@ -36,3 +36,5 @@ Round of play example:
 1. Player has a card that adds 5 Mult to each white note played, and +20 Mult if all notes played are part of the same pentatonic scale
 2. Player decides to play his notes "C", "D", "G", "C" and another "C".
 3. This results in *base score* * `15 (3 C's Played)` * `20 (all notes pentatonic)`
+
+----

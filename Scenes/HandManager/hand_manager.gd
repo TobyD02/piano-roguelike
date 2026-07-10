@@ -8,7 +8,7 @@ var hovered_card: Card = null
 var hand: Array[Card] = []
 
 const CARD_WIDTH = 40
-const HAND_SIZE = 40
+const HAND_SIZE = 20
 const HAND_WIDTH = CARD_WIDTH * 10
 
 func _ready():

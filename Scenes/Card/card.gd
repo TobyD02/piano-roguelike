@@ -31,11 +31,17 @@ func _setup_base_card():
 func _generate_random():
 	var notes = Note.NoteEnum.values()
 	var cols = Note.NoteColorEnum.values()
-
-
+	
+	 #Select 3 notes (spaced) and then potentially add extensions?
+	
 	for i in 4:
 		var pressed_note: Note.NoteEnum = notes[randi_range(0, len(notes) - 1)]
 		set_card_note(pressed_note, true)
+	#set_card_note(Note.NoteEnum.NOTE_G, true)
+	#set_card_note(Note.NoteEnum.NOTE_A_SHARP, true)
+	#set_card_note(Note.NoteEnum.NOTE_C_SHARP, true)
+	#set_card_note(Note.NoteEnum.NOTE_E, true)
+
 
 func set_card_note(_note: Note.NoteEnum, _is_pressed: bool):
 	var col = Note.NoteColorEnum.GRAY if not _is_pressed else Note.NoteColorEnum.WHITE
