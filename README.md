@@ -50,3 +50,8 @@ Need to think about how the gameplay progresses/accelerates as the game goes on 
 - Notes retriggering?
 - Notes becoming the root of a new chord (or perhaps triggering all subchords from its root - i.e. `c e g b d` could trigger "cmaj", "cmaj7", "cmaj9")
 
+----
+
+## Next Changes (12/07/2026)
+- Need to improve harmonic analysis still - its working, but I dont agree with alot of the classifications.
+- Also - need to implement some sort of scoring, and better display for played cards (chords)

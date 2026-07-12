@@ -1,7 +1,7 @@
 @tool
 class_name Note extends Node2D
 
-var pressed_hover_shader: ShaderMaterial
+var pressed_standout_shader: ShaderMaterial
 
 var note: NoteEnum
 var note_color: NoteColorEnum
@@ -50,21 +50,6 @@ var note_color_index_map: Dictionary = {
 	NoteColorEnum.YELLOW: 6,
 }
 
-const note_enum_to_string: Dictionary = {
-	NoteEnum.NOTE_C: "c",
-	NoteEnum.NOTE_C_SHARP: "c#",
-	NoteEnum.NOTE_D: "d",
-	NoteEnum.NOTE_D_SHARP: "d#",
-	NoteEnum.NOTE_E: "e",
-	NoteEnum.NOTE_F: "f",
-	NoteEnum.NOTE_F_SHARP: "f#",
-	NoteEnum.NOTE_G: "g",
-	NoteEnum.NOTE_G_SHARP: "g#",
-	NoteEnum.NOTE_A: "a",
-	NoteEnum.NOTE_A_SHARP: "a#",
-	NoteEnum.NOTE_B: "b",
-}
-
 enum NoteEnum {
 	NOTE_C,
 	NOTE_C_SHARP,
@@ -94,8 +79,8 @@ func _ready():
 	current_animation_offset = note_animation_x_offset_map[NoteEnum.NOTE_C]
 	default_z_index = z_index
 	
-	pressed_hover_shader = ShaderMaterial.new()
-	pressed_hover_shader.shader = load("res://Scenes/Note/note_outline_shader.gdshader")
+	pressed_standout_shader = ShaderMaterial.new()
+	pressed_standout_shader.shader = load("res://Scenes/Note/note_outline_shader.gdshader")
 	
 	sprite.material = null
 	
@@ -148,11 +133,11 @@ func is_note_black(note: NoteEnum) -> bool:
 	
 var default_scale = Vector2.ONE
 var default_z_index: int
-func set_card_hovered(_card_hovered: bool):
-	if is_pressed and _card_hovered:
+func set_card_standout(_card_standout: bool):
+	if is_pressed and _card_standout:
 		scale = default_scale * 1.2
 		z_index = default_z_index + 1
-		sprite.material = pressed_hover_shader
+		sprite.material = pressed_standout_shader
 	else:
 		scale = default_scale
 		z_index = default_z_index

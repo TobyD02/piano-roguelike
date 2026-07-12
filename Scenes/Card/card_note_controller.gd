@@ -112,9 +112,9 @@ func set_full_card_color(_color: Note.NoteColorEnum):
 		
 	update_card_background()
 	
-func set_card_hovered(_card_hovered: bool):
+func set_card_standout(_card_standout: bool):
 	for note in notes_to_nodes:
-		notes_to_nodes[note].set_card_hovered(_card_hovered)
+		notes_to_nodes[note].set_card_standout(_card_standout)
 		
 	
 func update_card_background():

@@ -88,7 +88,7 @@ class ChordPattern:
 		if extra_notes.has(11):
 			if _name.find("Maj") == -1:
 				_name += "Maj"
-		elif (extra_notes.has(10)) or (has_nine or has_eleven or has_thirteen):
+		elif (extra_notes.has(10)):
 			if _name.find("Maj") != -1:
 				_name = _name.replace("Maj", "")
 				
@@ -101,7 +101,7 @@ class ChordPattern:
 			
 		if has_thirteen:
 			if not has_eleven:
-				if not has_seven and not is_sus_chord: # If no seventh, then it is a 6 chord
+				if not has_seven and not is_sus_chord and extra_notes.has(9): # If no seventh, then it is a 6 chord
 					alterations += 1
 					_name += "6"
 				else:
@@ -142,10 +142,10 @@ class ChordPattern:
 					if extra_notes.has(1):
 						alterations += 1
 						_name += "Add(b9)"
-					elif extra_notes.has(2):
+					if extra_notes.has(2):
 						alterations += 1
 						_name += "Add9"
-					else:
+					if extra_notes.has(3):
 						alterations += 1
 						_name += "Add(#9)"
 			else:
@@ -162,7 +162,8 @@ class ChordPattern:
 class Chord:
 	# These are in order of priority - i.e. before Maj is moved on from, each inversion is checked
 	var chord_lookup: Array = [
-		# Triads
+		ChordPattern.new(" Note ", [0], false),
+		ChordPattern.new("5", [0, 7], false),
 		ChordPattern.new("Maj", [0, 4, 7], false),
 		ChordPattern.new("Min", [0, 3, 7], false),
 		ChordPattern.new("Dim", [0, 3, 6], false),
@@ -211,11 +212,14 @@ class Chord:
 			intervals.sort()
 			for pattern in chord_lookup:
 				var score = pattern.score(intervals)
-				print(str(score) + " | " +  pattern.get_name(Note.note_enum_to_string[root]))
 				if score > best_score:
-					chosen = pattern.get_name(Note.note_enum_to_string[root])
+					chosen = pattern.get_name(
+						HarmonicAnalysis.get_note_name(
+							root, HarmonicAnalysis.get_scale_accidental_type(root)
+						)
+					)
 					best_score = score
-					print("New Best: " + chosen + " | SCORE: " + str(score))
+					#print("New Best: " + chosen + " | SCORE: " + str(score))
 		
 		return chosen
 		
@@ -250,3 +254,46 @@ class Interval:
 	
 	func get_names():
 		return names_lookup[semitones]
+		
+enum AccidentalType {
+	SHARP,
+	FLAT,
+	NONE,
+}		
+		
+## Accidental Type can be null, or HarmonicAnalysis.ACCIDENTAL_TYPE
+func get_note_name(note: Note.NoteEnum, accidental_type = null):
+	const note_enum_to_string: Dictionary = {
+		Note.NoteEnum.NOTE_C: {AccidentalType.SHARP: "c", AccidentalType.FLAT: "c"},
+		Note.NoteEnum.NOTE_C_SHARP: {AccidentalType.SHARP: "c#", AccidentalType.FLAT: "d♭"},
+		Note.NoteEnum.NOTE_D: {AccidentalType.SHARP: "d", AccidentalType.FLAT: "d"},
+		Note.NoteEnum.NOTE_D_SHARP: {AccidentalType.SHARP: "d#", AccidentalType.FLAT: "e♭"},
+		Note.NoteEnum.NOTE_E: {AccidentalType.SHARP: "e", AccidentalType.FLAT: "e"},
+		Note.NoteEnum.NOTE_F: {AccidentalType.SHARP: "f", AccidentalType.FLAT: "f"},
+		Note.NoteEnum.NOTE_F_SHARP: {AccidentalType.SHARP: "f#", AccidentalType.FLAT: "g♭"},
+		Note.NoteEnum.NOTE_G: {AccidentalType.SHARP: "g", AccidentalType.FLAT: "g"},
+		Note.NoteEnum.NOTE_G_SHARP: {AccidentalType.SHARP: "g#", AccidentalType.FLAT: "a♭"},
+		Note.NoteEnum.NOTE_A: {AccidentalType.SHARP: "a", AccidentalType.FLAT: "a"},
+		Note.NoteEnum.NOTE_A_SHARP: {AccidentalType.SHARP: "a#", AccidentalType.FLAT: "b♭"},
+		Note.NoteEnum.NOTE_B: {AccidentalType.SHARP: "b", AccidentalType.FLAT: "b"},
+	}
+	
+	return note_enum_to_string[note][circle_of_fifths[note]]
+
+func get_scale_accidental_type(scale_root: Note.NoteEnum):
+	return circle_of_fifths[scale_root]
+
+const circle_of_fifths: Dictionary = {
+	Note.NoteEnum.NOTE_C: AccidentalType.FLAT,
+	Note.NoteEnum.NOTE_C_SHARP: AccidentalType.SHARP,
+	Note.NoteEnum.NOTE_D: AccidentalType.SHARP,
+	Note.NoteEnum.NOTE_D_SHARP: AccidentalType.FLAT,
+	Note.NoteEnum.NOTE_E: AccidentalType.SHARP,
+	Note.NoteEnum.NOTE_F: AccidentalType.FLAT,
+	Note.NoteEnum.NOTE_F_SHARP: AccidentalType.SHARP,
+	Note.NoteEnum.NOTE_G: AccidentalType.SHARP,
+	Note.NoteEnum.NOTE_G_SHARP: AccidentalType.FLAT,
+	Note.NoteEnum.NOTE_A: AccidentalType.SHARP,
+	Note.NoteEnum.NOTE_A_SHARP: AccidentalType.FLAT,
+	Note.NoteEnum.NOTE_B: AccidentalType.SHARP,
+}

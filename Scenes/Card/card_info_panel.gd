@@ -27,7 +27,7 @@ func _generate_contents():
 	var notes_strings: Array[String] = []
 	for note in card_note_controller.notes_pressed:
 		if card_note_controller.notes_pressed[note]:
-			notes_strings.append(Note.note_enum_to_string[note])
+			notes_strings.append(HarmonicAnalysis.get_note_name(note))
 	
 	notes_label.text = " ".join(notes_strings)
 	

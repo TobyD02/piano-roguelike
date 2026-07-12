@@ -2,5 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bqi6c0a5ta6xy" path="res://Scenes/HandManager/hand_manager.gd" id="1_s7b4y"]
 
-[node name="HandManager" type="Node2D" unique_id=1948066415]
+[node name="HandManager" type="Node2D" unique_id=1948066415 node_paths=PackedStringArray("hand_score_label")]
 script = ExtResource("1_s7b4y")
+hand_score_label = NodePath("HandScoreLabel")
+
+[node name="HandScoreLabel" type="Label" parent="." unique_id=1288851567]
+offset_left = -24.0
+offset_top = -131.0
+offset_right = 16.0
+offset_bottom = -108.0
+text = "hello"
